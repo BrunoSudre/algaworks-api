@@ -1,17 +1,19 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const controllers = require('./controllers')
+const cors = require('cors')
 const app = express()
-const port = 3000
+const port = 3001
 
 app.use(bodyParser.json())
+app.use(cors())
 
 app.get('/', (req, res) => {
-    res.send('Hello World!')
+    res.send('ALGAWORKS API!')
 })
 
-app.use('/users', controllers.users)
-app.use('/courses', controllers.courses)
+app.use('/usuarios', controllers.usuarios)
+app.use('/cursos', controllers.cursos)
 
 app.listen(port, () => console.log(`Algaworks-API listening at http://localhost:${port}!`))
 
