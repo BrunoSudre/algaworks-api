@@ -2,7 +2,7 @@
 
 Para executar a aplicação é necessário executar os seguintes comandos:
 
-###Passo 1:
+### Passo 1:
 Primeiramente, devemos baixar todas as dependências com o
 
 > `npm install `
