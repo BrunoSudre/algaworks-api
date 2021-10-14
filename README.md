@@ -16,7 +16,7 @@ criação e gerenciamento de entidades no banco de dados. Com o Sequelize instal
 para que ele possa criar a base de dados do ambiente de desenvolvimento em questão. 
 Num contexto local, a base criada será de development.
 
-## Passo 3:
+### Passo 3:
 Para executar as migrações, que contém a criacão das entidades da aplicação, devemos executar
 
 >`npx sequelize db:migrate`.
