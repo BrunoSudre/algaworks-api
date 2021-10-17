@@ -41,3 +41,8 @@ Para executar as migrações, que contém a criacão das entidades da aplicaçã
 Para carregar os dados iniciais de demonstração, devemos executar
 
 >`npx sequelize db:seed:all`.
+
+### Passo 6:
+Para rodar o Web Service, basta rodar o comando
+
+>`npm run dev`.
