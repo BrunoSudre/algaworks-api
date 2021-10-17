@@ -46,3 +46,5 @@ Para carregar os dados iniciais de demonstração, devemos executar
 Para rodar o Web Service, basta rodar o comando
 
 >`npm run dev`.
+
+O Web Service irá subir em http://localhost:3001
