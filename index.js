@@ -14,6 +14,8 @@ app.get('/', (req, res) => {
 
 app.use('/usuarios', controllers.usuarios)
 app.use('/cursos', controllers.cursos)
+app.use('/modulos', controllers.modulos)
+app.use('/conteudos', controllers.conteudos)
 
 app.listen(port, () => console.log(`Algaworks-API listening at http://localhost:${port}!`))
 

@@ -1,4 +1,4 @@
-const { Usuario } = require('../models')
+const { tb_usuarios: Usuario } = require('../models')
 const { Router } = require('express')
 const {Op} = require("sequelize");
 
@@ -6,10 +6,10 @@ const router = Router()
 
 router.get('/', async (req, res) => {
     const { email } = req.query
-    let user;
-
+    let usuario;
+    console.log(Usuario)
     if (email) {
-         user = await Usuario.findAll({
+         usuario = await Usuario.findAll({
             where: {
                 email: {
                     [Op.eq]: email
@@ -17,17 +17,17 @@ router.get('/', async (req, res) => {
             }
         })
     } else {
-        user = await Usuario.findAll()
+        usuario = await Usuario.findAll()
     }
 
 
-    res.status(200).json(user)
+    res.status(200).json(usuario)
 })
 
 router.get('/:id', async (req, res) => {
     const { id } = req.params
-    const user = await Usuario.findByPk(id)
-    res.status(200).json(user)
+    const usuario = await Usuario.findByPk(id)
+    res.status(200).json(usuario)
 })
 
 router.post('/', async (req, res) => {

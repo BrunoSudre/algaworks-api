@@ -1,11 +1,9 @@
-const { STRING, INTEGER } = require('sequelize');
+module.exports = (sequelize, DataTypes) => {
+    const Usuario = sequelize.define('tb_usuarios', {
+        nome: DataTypes.STRING,
+        email: DataTypes.STRING,
+        password: DataTypes.STRING,
+    });
 
-const Usuario = (sequelize) => {
-    return sequelize.define('Usuario', {
-        nome: STRING,
-        email: STRING,
-        password: STRING,
-    })
+    return Usuario;
 }
-
-module.exports = Usuario

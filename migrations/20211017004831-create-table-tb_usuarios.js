@@ -2,7 +2,7 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Cursos', {
+    return queryInterface.createTable('tb_usuarios', {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -13,27 +13,11 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      descricao: {
+      email: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      nivel: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      porcDesconto: {
-        type: Sequelize.DOUBLE,
-        allowNull: false,
-      },
-      precoOriginal: {
-        type: Sequelize.DOUBLE,
-        allowNull: false,
-      },
-      precoPromocional: {
-        type: Sequelize.DOUBLE,
-        allowNull: false,
-      },
-      urlImagem: {
+      password: {
         type: Sequelize.STRING,
         allowNull: false,
       },
@@ -49,6 +33,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Cursos');
+    return queryInterface.dropTable('tb_usuarios');
   },
 };

@@ -1,4 +1,4 @@
-const { Curso } = require('../models')
+const { tb_cursos: Curso } = require('../models')
 const { Router } = require('express')
 const {Op} = require("sequelize");
 
@@ -6,9 +6,9 @@ const router = Router()
 
 router.get('/', async (req, res) => {
     const { nome } = req.query
-    let course;
+    let curso;
     if (nome) {
-        course = await Curso.findAll({
+        curso = await Curso.findAll({
             where: {
                 nome: {
                     [Op.like]: `%${nome}%`
@@ -16,16 +16,16 @@ router.get('/', async (req, res) => {
             }
         })
     } else {
-        course = await Curso.findAll()
+        curso = await Curso.findAll()
     }
 
-    res.status(200).json(course)
+    res.status(200).json(curso)
 })
 
 router.get('/:id', async (req, res) => {
     const { id } = req.params
-    const course = await Curso.findByPk(id)
-    res.status(200).json(course)
+    const curso = await Curso.findByPk(id)
+    res.status(200).json(curso)
 })
 
 router.post('/', async (req, res) => {

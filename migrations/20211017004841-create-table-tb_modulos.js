@@ -2,22 +2,29 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Usuarios', {
+    return queryInterface.createTable('tb_modulos', {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
         allowNull: false,
       },
+      curso_id: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: {
+            tableName: 'tb_cursos',
+          },
+          key: 'id',
+        },
+        allowNull: false,
+        onDelete: 'CASCADE',
+      },
       nome: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      email: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      password: {
+      cargaHoraria: {
         type: Sequelize.STRING,
         allowNull: false,
       },
@@ -33,6 +40,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Usuarios');
+    return queryInterface.dropTable('tb_modulos');
   },
 };
