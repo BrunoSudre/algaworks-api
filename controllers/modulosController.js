@@ -1,4 +1,4 @@
-const { tb_modulos: Modulo } = require('../models')
+const { tb_modulos: Modulo, tb_conteudos: Conteudo } = require('../models')
 const { Router } = require('express')
 const {Op} = require("sequelize");
 
@@ -16,7 +16,9 @@ router.get('/', async (req, res) => {
             }
         })
     } else {
-        modulo = await Modulo.findAll()
+        modulo = await Modulo.findAll({
+            include: {model: Conteudo, as: 'conteudos'}
+        })
     }
 
     res.status(200).json(modulo)
@@ -29,15 +31,13 @@ router.get('/:id', async (req, res) => {
 })
 
 router.post('/', async (req, res) => {
-    const { nome, cargaHoraria, curso_id } = req.body
-    const newUser = await Modulo.create({ nome, cargaHoraria, curso_id })
+    const newUser = await Modulo.create({ ...req.body })
     res.status(200).json(newUser)
 })
 
 router.put('/:id', async (req, res) => {
-    const { nome, cargaHoraria, curso_id } = req.body
     await Modulo.update(
-        { nome, cargaHoraria, curso_id },
+        { ...req.body },
         {
             where: {
                 id: req.params.id

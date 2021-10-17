@@ -21,19 +21,19 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      porcDesconto: {
+      porc_desconto: {
         type: Sequelize.DOUBLE,
         allowNull: false,
       },
-      precoOriginal: {
+      preco_original: {
         type: Sequelize.DOUBLE,
         allowNull: false,
       },
-      precoPromocional: {
+      preco_promocional: {
         type: Sequelize.DOUBLE,
         allowNull: false,
       },
-      urlImagem: {
+      url_imagem: {
         type: Sequelize.STRING,
         allowNull: false,
       },

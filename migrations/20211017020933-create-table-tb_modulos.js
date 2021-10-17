@@ -24,7 +24,7 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      cargaHoraria: {
+      carga_horaria: {
         type: Sequelize.STRING,
         allowNull: false,
       },

@@ -1,4 +1,4 @@
-const { tb_cursos: Curso } = require('../models')
+const { tb_cursos: Curso, tb_modulos: Modulo, tb_conteudos: Conteudo } = require('../models')
 const { Router } = require('express')
 const {Op} = require("sequelize");
 
@@ -16,7 +16,17 @@ router.get('/', async (req, res) => {
             }
         })
     } else {
-        curso = await Curso.findAll()
+        curso = await Curso.findAll({
+            include: [
+                {
+                    model: Modulo,
+                    as: 'modulos',
+                    include:{
+                        model: Conteudo,
+                        as: 'conteudos'
+                    }}
+            ]
+        })
     }
 
     res.status(200).json(curso)
@@ -29,15 +39,13 @@ router.get('/:id', async (req, res) => {
 })
 
 router.post('/', async (req, res) => {
-    const { nome, descricao, nivel, porcDesconto, precoOriginal, precoPromocional, urlImagem } = req.body
-    const newUser = await Curso.create({ nome, descricao, nivel, porcDesconto, precoOriginal, precoPromocional, urlImagem })
+    const newUser = await Curso.create({ ...req.body })
     res.status(200).json(newUser)
 })
 
 router.put('/:id', async (req, res) => {
-    const { nome, descricao, nivel, porcDesconto, precoOriginal, precoPromocional, urlImagem } = req.body
     await Curso.update(
-        { nome, descricao, nivel, porcDesconto, precoOriginal, precoPromocional, urlImagem },
+        { ...req.body },
         {
             where: {
                 id: req.params.id

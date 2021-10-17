@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
     Conteudo.associate = (models) => {
         Conteudo.belongsTo(models.tb_modulos, {
             foreignKey: 'id',
-            as: 'modulo',
+            as: 'modulos',
             onDelete: 'CASCADE',
         });
     };
