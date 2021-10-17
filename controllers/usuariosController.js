@@ -37,9 +37,9 @@ router.post('/', async (req, res) => {
 })
 
 router.put('/:id', async (req, res) => {
-    const { nome, email, password } = req.body
+    const { nome, password } = req.body
     await Usuario.update(
-        { nome, email, password},
+        { nome, password},
         {
             where: {
                 id: req.params.id
